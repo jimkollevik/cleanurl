@@ -10,11 +10,7 @@ chrome.action.onClicked.addListener((tab) => {
         // Clean the URL
         const cleanedURL = cleanURL(tab.url);
 
-        // Copy the cleaned URL to the clipboard
-        navigator.clipboard.writeText(cleanedURL).then(() => {
-            console.log(`Copied cleaned URL: ${cleanedURL}`);
-        }).catch((err) => {
-            console.error("Failed to copy URL:", err);
-        });
+        // Send cleaned URL to popup for copying
+        chrome.runtime.sendMessage({ type: "setCleanedURL", cleanedURL: cleanedURL });
     }
 });
