@@ -8,6 +8,37 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/split-type"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+
+
+    <script>
+        // Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyCWgtB7Ev9SEieGG56mcezK9vYyBcFaiFs",
+            authDomain: "clean-url-5aefd.firebaseapp.com",
+            databaseURL: "https://clean-url-5aefd-default-rtdb.firebaseio.com/",
+            projectId: "clean-url-5aefd",
+        };
+
+        // Initialize Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        const db = firebase.database();
+
+        // Fetch count from Firebase
+        function fetchCleanedCount() {
+            db.ref("cleanedCount").on("value", (snapshot) => {
+                document.getElementById("cleaned-count").textContent = snapshot.val();
+            });
+        }
+
+        // Run function after Firebase loads
+        window.onload = fetchCleanedCount;
+    </script>
+
     <style>
 body {
     margin: 0;
@@ -75,7 +106,11 @@ a {
             <button href="">Get a handy URL now &rarr;</button>
         </a>
         <p>Clean URL Chrome extension is a project made for the love of simplicity. It copies the url & clears everything after "/?" so you get a short & handy URL to paste. <br> It's free to use, distribute and change. It's hosted on <a href="https://github.com/jimkollevik/cleanurl" target="_blank">github &#8599;</a> & made by <a href="https://jimkollevik.com" target="_blank">json &#8599;</a></p>
+
+
+        <h1>URLs Cleaned: <span id="cleaned-count">Loading...</span></h1>
     </section>
+
 
     <script type="text/javascript">
         
