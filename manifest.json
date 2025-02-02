@@ -3,15 +3,13 @@
     "name": "Clean URL Copier",
     "version": "1.0",
     "description": "Removes everything after '/?' when copying URLs.",
-    "permissions": ["clipboardWrite"],
+    "permissions": ["activeTab", "clipboardWrite", "scripting"],
     "background": {
         "service_worker": "background.js"
     },
     "action": {
+        "default_popup": "popup.html",
         "default_icon": {
-            "16": "icon.png",
-            "48": "icon.png",
-            "128": "icon.png"
         }
     }
 }
