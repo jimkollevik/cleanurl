@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Fill Text Effect</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/split-type"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <style>
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #111111;
+}
+h1 {
+    color: white;
+    font-size: 5vw;
+    line-height: 60px;
+}
+span {
+    color: #444444;
+    font-size: 2vw;
+    word-break: break-all;
+    cursor: pointer;
+}
+section {
+    height: 55vh;
+    width: 60%;
+    margin: 0 auto;
+}
+.hero {
+    margin-top: 10%;
+}
+.reveal-type {
+    font-size: 5vw;
+    font-weight: bold;
+}
+button {
+    background-color: #DBF227;
+    border: none;
+    width: 300px;
+    height: 60px;
+    border-radius: 10px;
+    font-size: 1vw;
+    cursor: pointer;
+    margin: 0 0 7.5% 0;
+}
+button:hover {
+    background-color: #ffffff;
+    color: #333333;
+}
+p {
+    color: #ffffff;
+    font-size: 15px;
+}
+a {
+    color: #DBF227;
+}
+</style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Tired of copying this:</h1>
+        <span>https://www.example.com/?utm_source=some_source&utm_medium=some_medium&utm_campaign=some_campaign_name&utm_content=some_content</span>
+    </section>
+
+    <section>
+        <p class="reveal-type" data-bg-color="#333333" data-fg-color="white">Copy a clean URL and only get what actually matters.</p>
+    </section>
+
+    <section>
+        <a href="">
+            <button href="">Start cleaning now &rarr;</button>
+        </a>
+        <p>Clean URL Chrome extension is a project made for the love of simplicity. <br> It's free to use, distribute and change. It's hosted on <a href="https://github.com/jimkollevik/cleanurl" target="_blank">github &#8599;</a> & made by <a href="https://jimkollevik.com" target="_blank">json &#8599;</a></p>
+    </section>
+
+    <script type="text/javascript">
+        
+        gsap.registerPlugin(ScrollTrigger)
+
+        const splitTypes = document.querySelectorAll('.reveal-type')
+
+        splitTypes.forEach((char,i) => {
+
+            const bg = char.dataset.bgColor
+            const fg = char.dataset.fgColor
+
+            const text = new SplitType(char, { types: 'chars'})
+
+            gsap.fromTo(text.chars, 
+                {
+                    color: bg,
+                },
+                {
+                    color: fg,
+                    duration: 0.3,
+                    stagger: 0.02,
+                    scrollTrigger: {
+                        trigger: char,
+                        start: 'top 80%',
+                        end: 'top 20%',
+                        scrub: true,
+                        markers: false,
+                        toggleActions: 'play play reverse reverse'
+                    }
+            })
+        })
+
+
+        const lenis = new Lenis()
+
+        lenis.on('scroll', (e) => {
+        console.log(e)
+        })
+
+        function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+
+    </script>
+</body>
+</html>
