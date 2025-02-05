@@ -2,12 +2,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const copyBtn = document.getElementById("copy-btn");
     
     // Reference to the div with the class 'wrapper' in popup.html
-    const wrapperDiv = document.querySelector(".content");
+    const wrapperDiv = document.querySelector(".wrapper");
     
     // Create the history list element inside the wrapper
     const historyList = document.createElement("ul");
-    historyList.style.listStyle = "none";
-    historyList.style.padding = "0";
     wrapperDiv.appendChild(historyList);
 
     // Function to clean the URL (removes everything after "?")
@@ -17,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Function to update button and handle copying
     function updateAndCopy(url) {
-        copyBtn.textContent = url;
+        copyBtn.textContent = 'Copy url';
 
         copyBtn.onclick = async () => {
             try {
@@ -25,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 copyBtn.textContent = "Copied!";
                 await saveToHistory(url);
                 renderHistory();
-                setTimeout(() => (copyBtn.textContent = url), 1500);
+                setTimeout(() => (copyBtn.textContent = 'Copy url'), 1500);
             } catch (err) {
                 console.error("Failed to copy:", err);
                 copyBtn.textContent = "Error!";

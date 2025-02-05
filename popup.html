@@ -3,64 +3,98 @@
 <head>
     <title>Clean URL Copier</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="popup.js" defer></script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
         body {
             width: 300px;
             font-family: "Roboto", serif;
-            background-color: #EAEAEA;
+            background-color: #FFFFFF;
+        }
+        .header, .btn {
+            height: 50px;
+            padding-left: 20px;
+            border-bottom: 2px solid #FAFAFA;
+        }
+        #logo {
+            width: 25px;
         }
         .wrapper {
-            background-color: #fff;
-            border-radius: 10px;
-            min-height: 300px;
-            width: 92%;
-            margin: 0 auto;
-            border: #cccccc 1px solid;
-            margin-bottom: 20px;
+            padding-left: 20px;
+            margin: 20px 0 20px 0;
+        }
+        .header ul li {
+            display: inline-block;
+            cursor: auto;
+            vertical-align: middle;
+            margin: 10px 0 0 0;
+        }
+        li {
+            list-style: none;
+        }
+        .wrapper li::before {
+            content: '';
+            display: inline-block;
+            margin-right: 5px;
+ 
+            /* Height of the list image*/
+            height: 20px;
+ 
+            /* Width of the list image*/
+            width: 20px;
+            background-image: url("copy-bl.svg");
+
+            vertical-align: middle;
         }
         ul li {
+            padding: 0;
             cursor: pointer;
+            margin: 0 0 5px 0;
         }
         #copy-btn {
-            border-radius: 10px;
-            background-color: #EAEAEA;
-            color: #0455BF;
-            border: #0455BF 1px solid;
+            width: 90%;
             height: 30px;
-            width: 92%;
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-            display: block; /* Makes the button a block element */
-            margin: 0 auto; /* Centers horizontally */
-            margin-top: 20px;
-            margin-bottom: 20px;
+            border: 1px solid #FAFAFA;
+            background: none;
+            border-radius: 8px;
+            margin: 10px 0 10px 0;
+            -webkit-box-shadow: 0px 0px 2px 0px rgba(214,210,214,1);
+            -moz-box-shadow: 0px 0px 2px 0px rgba(214,210,214,1);
+            box-shadow: 0px 0px 2px 0px rgba(214,210,214,1);
         }
         #copy-btn:hover {
-            background-color: red;
+            background-color: #202020;
             cursor: pointer;
-            background-color: #0455BF;
-            color: #FFFFFF;
+            color: #ffffff;
+            border: 0;
         }
-        .content {
-            width: 96%;
-            margin: 0 auto;
+        h1 {
+            font-size: 14px;
+            font-weight: 400;
         }
-        .wrapper p {
-            color: #cccccc;
-        }
-        ul li {
-            margin-bottom: 5px;
+        .wrapper h1 {
+            color: #202020;
+            margin: 0 0 20px 0;
         }
     </style>
 </head>
 <body>
-    <button id="copy-btn">Loading...</button>
+    <div class="header">
+        <ul>
+            <li id="logo"><img src="link-icon.svg"></li>
+            <li><h1>Clean url</h1></li>
+        </ul>
+    </div>
+    <div class="btn">
+        <button id="copy-btn"><img src="copy-bl.svg"></button>
+    </div>
     <div class="wrapper">
-        <div class="content">
-            <p>Copy history:</p>
-        </div>
+        <h1>Your copied urls:</h1>
     </div>
 </body>
 </html>
