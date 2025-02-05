@@ -2,30 +2,65 @@
 <html lang="en">
 <head>
     <title>Clean URL Copier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="popup.js" defer></script>
     <style>
         body {
-            width: 250px;
-            text-align: center;
-            font-family: Arial, sans-serif;
+            width: 300px;
+            font-family: "Roboto", serif;
+            background-color: #EAEAEA;
+        }
+        .wrapper {
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 300px;
+            width: 92%;
+            margin: 0 auto;
+            border: #cccccc 1px solid;
+            margin-bottom: 20px;
+        }
+        ul li {
+            cursor: pointer;
         }
         #copy-btn {
-            width: 90%;
-            padding: 10px;
-            font-size: 14px;
-            cursor: pointer;
-            border: none;
-            background-color: #4CAF50;
-            color: white;
-            border-radius: 5px;
-            margin-top: 10px;
+            border-radius: 10px;
+            background-color: #EAEAEA;
+            color: #0455BF;
+            border: #0455BF 1px solid;
+            height: 30px;
+            width: 92%;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            display: block; /* Makes the button a block element */
+            margin: 0 auto; /* Centers horizontally */
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
         #copy-btn:hover {
-            background-color: #45a049;
+            background-color: red;
+            cursor: pointer;
+            background-color: #0455BF;
+            color: #FFFFFF;
+        }
+        .content {
+            width: 96%;
+            margin: 0 auto;
+        }
+        .wrapper p {
+            color: #cccccc;
+        }
+        ul li {
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
     <button id="copy-btn">Loading...</button>
+    <div class="wrapper">
+        <div class="content">
+            <p>Copy history:</p>
+        </div>
+    </div>
 </body>
 </html>
